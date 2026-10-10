@@ -1,0 +1,2 @@
+[BUG-1049] Patient Portal lab result filtering failure.
+Description: Users attempting to view historical lab panels in the patient portal experience an infinite loading spinner when applying a custom date range filter that spans across calendar years (e.g., Dec 2025 to Jan 2026). Console logs show a timeout fetching FHIR API payloads from the clinical data repository, preventing patients from viewing critical HbA1c tracking data.

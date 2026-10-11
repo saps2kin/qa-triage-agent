@@ -1,0 +1,2 @@
+[FEEDBACK-Q3] Client feedback regarding analytics export layout.
+Description: Hospital administrators love the new data dashboard, but noted that exporting weekly compliance summaries directly to Excel requires too many manual column resizing steps. They requested an option to auto-format currency and date columns upon export.

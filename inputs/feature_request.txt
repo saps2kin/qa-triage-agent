@@ -1,0 +1,2 @@
+[FEATURE-REQ-12] Implement multi-factor authentication (MFA) bypass for trusted IP ranges.
+Description: Enterprise healthcare clients requested a configuration setting allowing system administrators to exempt internal hospital IP subnets from secondary push notifications, reducing login friction for shift nurses.

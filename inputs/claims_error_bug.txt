@@ -1,0 +1,2 @@
+[BUG-502] Timeout error when retrieving patient prescription history.
+Description: API call to the medication database times out after 30 seconds when fetching records exceeding 500 entries, causing the clinical dashboard to freeze.

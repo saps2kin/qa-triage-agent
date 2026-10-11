@@ -1,0 +1,2 @@
+[DEFECT-8847-2] Error 500 thrown during batch adjudication of secondary electronic pharmacy claims. 
+Description: When the pharmacy claims management module attempts to process nightly batch adjudications containing coordination of benefits (COB) data for Medicare Part D patients, an unhandled NullReferenceException occurs at ClaimsProcessor.validate_copay_tier().

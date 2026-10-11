@@ -1,0 +1,2 @@
+[BUG-901] Session persistence failure after token expiration.
+Description: Users are not being redirected to the login page when their OAuth token expires, resulting in silent data save failures on the patient form.

@@ -1,13 +1,25 @@
-# AI-Assisted QA Triage & Test Generation Agent
+# QA Triage & Test Case Agent
 
-A lightweight Python automation utility designed to accelerate QA cycles by automatically parsing unstructured bug reports or product requirements and generating standardized test cases, priorities, and risk assessments.
+An enterprise-ready Python and Streamlit web application designed to automate software quality assurance cycles. It processes unstructured bug reports and customer feedback into structured, standardized JSON triage artifacts and test cases.
 
-## Features
-- **Automated Triage:** Classifies incoming issues into bug reports or feature test plans.
-- **Structured Test Case Generation:** Instantly outputs steps, preconditions, and expected results for test runners.
-- **CI/CD Ready:** Can be integrated into pre-commit or webhook pipelines to assist test engineers.
+## 🚀 Live Demo
+Access the live deployed application here: **[🔗 Triage Agent on Streamlit Cloud](https://triage-agent.streamlit.app)** *(or insert your custom URL)*
 
-## Getting Started
-1. Clone the repository:
-   ```bash
-   git clone [https://github.com/your-username/qa-triage-agent.git](https://github.com/your-username/qa-triage-agent.git)
+---
+
+## 🛠️ Tech Stack & Architecture
+* **Frontend / UI:** [Streamlit](https://streamlit.io/)
+* **Core Logic:** Python (Standard Library / Modular Backend)
+* **Version Control:** Git & GitHub
+* **Cloud Hosting:** Streamlit Community Cloud
+
+### Project Structure
+```text
+qa-triage-agent/
+│
+├── agent.py            # Core backend logic for parsing and JSON generation
+├── app.py              # Streamlit web interface and file handling
+├── requirements.txt    # Python dependencies for deployment
+├── .gitignore          # Excludes temporary cache, .env, and local outputs
+├── inputs/             # Directory for sample raw bug reports & text files
+└── outputs/            # Local directory for generated JSON triage reports

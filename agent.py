@@ -6,8 +6,6 @@ def generate_qa_artifacts(requirement_or_bug: str):
     Analyzes input text (bug report or feature requirement) and 
     generates structured QA artifacts.
     """
-    print(f"[*] Analyzing input text: '{requirement_or_bug[:50]}...'")
-    
     is_bug = "error" in requirement_or_bug.lower() or "fail" in requirement_or_bug.lower() or "bug" in requirement_or_bug.lower()
     
     artifact = {
@@ -28,36 +26,43 @@ def generate_qa_artifacts(requirement_or_bug: str):
         ],
         "risk_assessment": "Data integrity and user session persistence checked."
     }
-    
     return artifact
 
 if __name__ == "__main__":
-    # Define directory paths
     input_dir = "inputs"
     output_dir = "outputs"
     
-    # Ensure output directory exists
+    # Ensure directories exist
+    os.makedirs(input_dir, exist_ok=True)
     os.makedirs(output_dir, exist_ok=True)
     
-    # Path to the specific input file
-    input_file_path = os.path.join(input_dir, "sample_bug.txt")
+    # Find all .txt files in the inputs folder
+    input_files = [f for f in os.listdir(input_dir) if f.endswith(".txt")]
     
-    if os.path.exists(input_file_path):
-        with open(input_file_path, "r") as f:
-            sample_input = f.read().strip()
+    if not input_files:
+        print(f"[!] No text files found in the '{input_dir}/' folder. Please add at least one .txt file.")
     else:
-        sample_input = "Default fallback: User reported an unexpected application crash on login."
-        print(f"[!] Warning: '{input_file_path}' not found. Using fallback text.")
-
-    # Generate the QA artifacts
-    result = generate_qa_artifacts(sample_input)
-    
-    # Define output file path
-    output_file_path = os.path.join(output_dir, "qa_report_output.json")
-    
-    # Write the result to the outputs folder
-    with open(output_file_path, "w") as out_f:
-        json.dump(result, out_f, indent=2)
+        print(f"[*] Found {len(input_files)} file(s) to process.")
         
-    print(f"\n[✔] Success! Output generated and saved to: {output_file_path}")
-    print(json.dumps(result, indent=2))
+        for filename in input_files:
+            input_path = os.path.join(input_dir, filename)
+            
+            # Read each file content
+            with open(input_path, "r", encoding="utf-8") as f:
+                file_content = f.read().strip()
+                
+            # Generate the QA artifacts
+            result = generate_qa_artifacts(file_content)
+            
+            # Create a unique output filename (e.g., bug1.txt -> bug1_report.json)
+            base_name = os.path.splitext(filename)[0]
+            output_filename = f"{base_name}_report.json"
+            output_path = os.path.join(output_dir, output_filename)
+            
+            # Write the individual JSON result to the outputs folder
+            with open(output_path, "w", encoding="utf-8") as out_f:
+                json.dump(result, out_f, indent=2)
+                
+            print(f"[✔] Processed '{filename}' -> Generated '{output_filename}'")
+            
+        print("\n[✔] All files processed successfully!")
